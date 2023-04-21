@@ -29,7 +29,8 @@ public class AnnotationHandler {
 
     var parentMethods = Arrays.stream(Class.forName(parent).getDeclaredMethods()).toList();
     var childMethods = Arrays.stream(Class.forName(child).getDeclaredMethods()).toList();
-    HashMap < String, String > nameAndRetType = new HashMap < > ();
+    
+    HashMap <String,String> nameAndRetType = new HashMap<>();
 
     childMethods.forEach(method -> {
       nameAndRetType.put(method.getName(), method.getReturnType().getName());
@@ -50,14 +51,13 @@ public class AnnotationHandler {
     if (!isChildAnnotation(parent, child.annotationType())) {
       return null;
     }
+    
     var exists = child.annotationType().getDeclaredAnnotation(parent);
+    
     try {
-
       var annotation = Proxy.newProxyInstance(
         Class.forName(exists.annotationType().getName()).getClassLoader(),
-        new Class[] {
-          exists.annotationType()
-        },
+        new Class[] {exists.annotationType()},
         new InvocationHandler() {
           @Override
           public Object invoke(Object proxy, Method method, Object[] args) {
