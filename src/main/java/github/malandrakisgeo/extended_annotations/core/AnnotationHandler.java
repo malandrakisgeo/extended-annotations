@@ -23,6 +23,7 @@ public class AnnotationHandler {
 
   }
 
+  
   private static boolean valuesOk(String parent, String child) throws Exception {
     AtomicBoolean returned = new AtomicBoolean(true);
 
@@ -44,6 +45,7 @@ public class AnnotationHandler {
     return returned.get();
   }
 
+  
   public static Object getAsParent(Class < ? extends Annotation > parent, Annotation child) {
     if (!isChildAnnotation(parent, child.annotationType())) {
       return null;
@@ -74,4 +76,5 @@ public class AnnotationHandler {
     }
 
   }
+  
 }
