@@ -1,7 +1,5 @@
 package github.malandrakisgeo.extended_annotations.testannotations;
 
-import github.malandrakisgeo.extended_annotations.core.Extends;
-
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
@@ -12,7 +10,6 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Documented
 @Target({METHOD})
 @Retention(RUNTIME)
-@Extends(parentalAnnotation = HttpRequest.class)
 @HttpRequest()
 public @interface GET {
 
